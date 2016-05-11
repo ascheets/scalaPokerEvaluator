@@ -1,0 +1,23 @@
+
+//card class, value = ace, 2, 3, ..., king
+class Card(val _suit: Int, val _value: Int) {
+  var suit: Int = _suit
+  var value: Int = _value
+
+
+}
+
+//class Deck
+
+
+//this is the main module where
+//main function is kept
+object Main {
+
+  def main(args: Array[String]) {
+
+
+
+
+    }
+}
