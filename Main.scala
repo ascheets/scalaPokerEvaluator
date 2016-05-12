@@ -29,10 +29,10 @@ trait NeedsCardTypes {
 //card class, value = ace, 2, 3, ..., king
 class Card(val _suit: Int, val _value: Int) extends NeedsCardTypes {
 
-  var suit: Int = _suit
-  var value: Int = _value
+  private var suit: Int = _suit
+  private var value: Int = _value
 
-  var played: Boolean = false
+  private var played: Boolean = false
 
   def setPlayed(_played: Boolean) {
 
@@ -52,27 +52,65 @@ class Card(val _suit: Int, val _value: Int) extends NeedsCardTypes {
 //deck class
 class Deck {
 
-  val cards = new Array[Card](52)
-  
-  var suit = 0;
-  var value = 0;
-  var count = 0;
+  //deck initialization code
 
+  //array to hold all cards in deck
+  private val cards = new Array[Card](52)
+  
+  //private vars for deck configuring
+  private var suit = 0;
+  private var value = 0;
+  private var count = 0;
+
+  //cycle through 13 card values for four suits
   for(suit <- 1 to 4){
 
     for(value <- 1 to 13){
 
+      //add card with this suit and value to the deck
       cards(count) = new Card(suit, value)
 
+      //increase location in the deck
       count = count + 1
 
     }
 
   }
 
-  for(c <- cards){
+  //print all the cards in the deck
+  def print() {
 
-    c.print
+    for(c <- cards){
+
+      c.print
+
+    }
+
+  }
+
+}
+
+class PokerEvaluator(val _numCards: Int) {
+
+  private var numHands: Int = 0
+
+  private
+
+  def setNumberOfHandsToPlay(_numHands: Int) {
+
+    numHands = _numHands
+
+  }
+
+  def playAndDisplay() {
+
+    println("nothing to see here")
+
+  }
+
+  def addCardToHand(_value: Int, _suit: String) {
+
+    println("nothing to see here")
 
   }
 
