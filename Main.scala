@@ -201,14 +201,16 @@ class PokerEvaluator(val _numCards: Int) {
     //this will play all hands
     generateHands
 
-    //display
-    for((k,v) <- handTallies){
-
-      var odds = v.toDouble/numHands.toDouble
-
-      println(k + ": " + odds)
-
-    }
+    println("Royal Flush" + ": " + (handTallies("Royal Flush").toDouble/numHands.toDouble)*100 + "%")
+    println("Straight Flush" + ": " + (handTallies("Straight Flush").toDouble/numHands.toDouble)*100 + "%")
+    println("Four of a kind" + ": " + (handTallies("Four of a kind").toDouble/numHands.toDouble)*100 + "%")
+    println("Full house" + ": " + (handTallies("Full house").toDouble/numHands.toDouble)*100 + "%")
+    println("Flush" + ": " + (handTallies("Flush").toDouble/numHands.toDouble)*100 + "%")
+    println("Straight" + ": " + (handTallies("Straight").toDouble/numHands.toDouble)*100 + "%")
+    println("Three of a kind" + ": " + (handTallies("Three of a kind").toDouble/numHands.toDouble)*100 + "%")
+    println("Two pair" + ": " + (handTallies("Two pair").toDouble/numHands.toDouble)*100 + "%")
+    println("Pair" + ": " + (handTallies("Pair").toDouble/numHands.toDouble)*100 + "%")
+    println("High Card" + ": " + (handTallies("High Card").toDouble/numHands.toDouble)*100 + "%")
 
   }
 
@@ -582,7 +584,7 @@ class PokerEvaluator(val _numCards: Int) {
       if(dif == 1){
 
         //extra condition that suit must be same
-        if(hand(x-1).getSuit == curSuit && hand(x).getSuit == curSuit) {
+        if(hand(x-1).getSuit == hand(x).getSuit && hand(x).getSuit == curSuit) {
 
           numGood = numGood + 1
 
@@ -961,12 +963,25 @@ object Main {
 
   def main(args: Array[String]) {
 
+    //five card evaluator
     val e1 = new PokerEvaluator(5);
 
     e1.setNumberOfHandsToPlay(100000)
 
     e1.playAndDisplay
 
+    println
+    println
+
+    //seven card
+    val e2 = new PokerEvaluator(7);
+
+    e2.setNumberOfHandsToPlay(100000)
+
+    e2.addCardToHand(2, "Hearts")
+    e2.addCardToHand(7, "Diamonds")
+
+    e2.playAndDisplay
 
     }
 }
